@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول دورات علم البيانات</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            font-size: 2.5em; /* حجم الخط */
+            margin: 40px 0 20px 0; /* هامش علوي كبير، هامش سفلي أقل */
+            color: red; /* اللون الأحمر */
+            font-weight: bold; /* الخط السميك */
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .login-container, .register-container {
+            margin: 50px auto;
+            width: 300px;
+        }
+        .login-container input[type="text"],
+        .register-container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .login-container button,
+        .register-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .register-link {
+            margin-top: 10px;
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<h1>جدول دورات علم البيانات</h1>
+
+<div class="login-container">
+    <h2>تسجيل الدخول</h2>
+    <input type="text" id="login-email" placeholder="البريد الإلكتروني" required>
+    <button onclick="login()">تسجيل الدخول</button>
+    <div class="register-link" onclick="showRegister()">إنشاء حساب جديد</div>
+</div>
+
+<div class="register-container" style="display:none;">
+    <h2>إنشاء حساب</h2>
+    <input type="text" id="register-email" placeholder="البريد الإلكتروني" required>
+    <button onclick="register()">تسجيل</button>
+    <div class="register-link" onclick="showLogin()">العودة إلى تسجيل الدخول</div>
+</div>
+
+<div id="course-table-container" style="display:none;">
+    <h2>جدول الدورات</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>الدورة</th>
+                <th>تم الانتهاء</th>
+                <th>لم يتم الانتهاء</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Intro to Programming with Python</td>
+                <td><input type="radio" name="course1" value="completed" onchange="saveData()"></td>
+                <td><input type="radio" name="course1" value="not_completed" onchange="saveData()"></td>
+            </tr>
+            <tr>
+                <td>Python collections</td>
+                <td><input type="radio" name="course2" value="completed" onchange="saveData()"></td>
+                <td><input type="radio" name="course2" value="not_completed" onchange="saveData()"></td>
+            </tr>
+            <tr>
+                <td>Modules and Packages with Python</td>
+                <td><input type="radio" name="course3" value="completed" onchange="saveData()"></td>
+                <td><input type="radio" name="course3" value="not_completed" onchange="saveData()"></td>
+            </tr>
+            <tr>
+                <td>Date and Time Management with Python</td>
+                <td><input type="radio" name="course4" value="completed" onchange="saveData()"></td>
+                <td><input type="radio" name="course4" value="not_completed" onchange="saveData()"></td>
+            </tr>
+            <tr>
+                <td>File Management & HTTP</td>
+                <td><input type="radio" name="course5" value="completed" onchange="saveData()"></td>
+                <td><input type="radio" name="course5" value="not_completed" onchange="saveData()"></td>
+            </tr>
+            <tr>
+                <td>Data Serialization with Python</td>
+                <td><input type="radio" name="course6" value="completed" onchange="saveData()"></td>
+                <td><input type="radio" name="course6" value="not_completed" onchange="saveData()"></td>
+            </tr>
+            <tr>
+                <td>Object Oriented Programming with Python</td>
+                <td><input type="radio" name="course7" value="completed" onchange="saveData()"></td>
+                <td><input type="radio" name="course7" value="not_completed" onchange="saveData()"></td>
+            </tr>
+            <tr>
+                <td>Exceptions with Python</td>
+                <td><input type="radio" name="course8" value="completed" onchange="saveData()"></td>
+                <td><input type="radio" name="course8" value="not_completed" onchange="saveData()"></td>
+            </tr>
+            <tr>
+                <td>Intro to Databases with Python</td>
+                <td><input type="radio" name="course9" value="completed" onchange="saveData()"></td>
+                <td><input type="radio" name="course9" value="not_completed" onchange="saveData()"></td>
+            </tr>
+            <tr>
+                <td>MySQL and MariaDB for Python Developers</td>
+                <td><input type="radio" name="course10" value="completed" onchange="saveData()"></td>
+                <td><input type="radio" name="course10" value="not_completed" onchange="saveData()"></td>
+            </tr>
+            <tr>
+                <td>Intro to Scientific Computing with NumPy</td>
+                <td><input type="radio" name="course11" value="completed" onchange="saveData()"></td>
+                <td><input type="radio" name="course11" value="not_completed" onchange="saveData()"></td>
+            </tr>
+            <tr>
+                <td>Intro to Pandas for Data Analysis</td>
+                <td><input type="radio" name="course12" value="completed" onchange="saveData()"></td>
+                <td><input type="radio" name="course12" value="not_completed" onchange="saveData()"></td>
+            </tr>
+            <tr>
+                <td>Reading Data with Python and Pandas</td>
+                <td><input type="radio" name="course13" value="completed" onchange="saveData()"></td>
+                <td><input type="radio" name="course13" value="not_completed" onchange="saveData()"></td>
+            </tr>
+            <tr>
+                <td>Data Cleaning with Pandas</td>
+                <td><input type="radio" name="course14" value="completed" onchange="saveData()"></td>
+                <td><input type="radio" name="course14" value="not_completed" onchange="saveData()"></td>
+            </tr>
+            <tr>
+                <td>Introduction to Probability</td>
+                <td><input type="radio" name="course15" value="completed" onchange="saveData()"></td>
+                <td><input type="radio" name="course15" value="not_completed" onchange="saveData()"></td>
+            </tr>
+            <tr>
+                <td>Artificial Intelligence Essentials</td>
+                <td><input type="radio" name="course16" value="completed" onchange="saveData()"></td>
+                <td><input type="radio" name="course16" value="not_completed" onchange="saveData()"></td>
+            </tr>
+            <tr>
+                <td>Introduction to Machine Learning</td>
+                <td><input type="radio" name="course17" value="completed" onchange="saveData()"></td>
+                <td><input type="radio" name="course17" value="not_completed" onchange="saveData()"></td>
+            </tr>
+            <tr>
+                <td>Classification algorithms</td>
+                <td><input type="radio" name="course18" value="completed" onchange="saveData()"></td>
+                <td><input type="radio" name="course18" value="not_completed" onchange="saveData()"></td>
+            </tr>
+            <tr>
+                <td>Decision Trees</td>
+                <td><input type="radio" name="course19" value="completed" onchange="saveData()"></td>
+                <td><input type="radio" name="course19" value="not_completed" onchange="saveData()"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    let currentUserEmail = ''; // لتخزين البريد الإلكتروني للمستخدم الحالي
+
+    // عرض صفحة التسجيل
+    function showRegister() {
+        document.querySelector('.login-container').style.display = 'none';
+        document.querySelector('.register-container').style.display = 'block';
+    }
+
+    // عرض صفحة تسجيل الدخول
+    function showLogin() {
+        document.querySelector('.register-container').style.display = 'none';
+        document.querySelector('.login-container').style.display = 'block';
+    }
+
+    // التسجيل
+    function register() {
+        let email = document.getElementById('register-email').value.toLowerCase(); // تحويل البريد الإلكتروني إلى أحرف صغيرة
+
+        // التحقق مما إذا كان البريد الإلكتروني مسجل مسبقًا
+        if (localStorage.getItem(email)) {
+            alert('البريد الإلكتروني مسجل مسبقًا. يرجى تسجيل الدخول.');
+            showLogin();
+        } else if (email) {
+            localStorage.setItem(email, JSON.stringify({})); // تخزين بريد إلكتروني جديد مع بيانات فارغة
+            alert('تم التسجيل بنجاح! الآن يمكنك تسجيل الدخول.');
+            showLogin();
+        } else {
+            alert('يرجى إدخال بريد إلكتروني صالح.');
+        }
+    }
+
+    // تسجيل الدخول
+    function login() {
+        let email = document.getElementById('login-email').value.toLowerCase(); // تحويل البريد الإلكتروني إلى أحرف صغيرة
+
+        if (localStorage.getItem(email)) {
+            currentUserEmail = email; // تعيين البريد الإلكتروني للمستخدم الحالي
+            document.querySelector('.login-container').style.display = 'none';
+            document.getElementById('course-table-container').style.display = 'block';
+            loadData(); // تحميل البيانات الخاصة بهذا البريد الإلكتروني
+        } else {
+            alert('البريد الإلكتروني غير صحيح.');
+        }
+    }
+
+    // حفظ البيانات
+    function saveData() {
+        const courses = [
+            'course1', 'course2', 'course3', 'course4', 'course5', 'course6', 
+            'course7', 'course8', 'course9', 'course10', 'course11', 'course12', 
+            'course13', 'course14', 'course15', 'course16', 'course17', 'course18', 
+            'course19'
+        ];
+        let courseData = {};
+
+        courses.forEach(course => {
+            const completed = document.querySelector(`input[name="${course}"]:checked`);
+            if (completed) {
+                courseData[course] = completed.value;
+            }
+        });
+
+        localStorage.setItem(currentUserEmail, JSON.stringify(courseData)); // تخزين البيانات الخاصة بالبريد الإلكتروني الحالي
+    }
+
+    // تحميل البيانات
+    function loadData() {
+        const courseData = JSON.parse(localStorage.getItem(currentUserEmail)) || {};
+        const courses = [
+            'course1', 'course2', 'course3', 'course4', 'course5', 'course6', 
+            'course7', 'course8', 'course9', 'course10', 'course11', 'course12', 
+            'course13', 'course14', 'course15', 'course16', 'course17', 'course18', 
+            'course19'
+        ];
+
+        courses.forEach(course => {
+            if (courseData[course]) {
+                document.querySelector(`input[name="${course}"][value="${courseData[course]}"]`).checked = true;
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
+
